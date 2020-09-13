@@ -1,28 +1,30 @@
-const  express =require('express');
-const  Product =require('../models/productModel');
-const  { isAuth, isAdmin } =require('../util');
+const express = require('express');
+const Product = require('../models/productModel');
+const { isAuth, isAdmin } = require('../util');
 
 // just for test , our server data sending to client or not 
-const testProduct =require('../data')
+const testProduct = require('../data')
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
+
+  return res.send(testProduct.products)
   const category = req.query.category ? { category: req.query.category } : {};
   const searchKeyword = req.query.searchKeyword
     ? {
-        name: {
-          $regex: req.query.searchKeyword,
-          $options: 'i',
-        },
-      }
+      name: {
+        $regex: req.query.searchKeyword,
+        $options: 'i',
+      },
+    }
     : {};
   const sortOrder = req.query.sortOrder
     ? req.query.sortOrder === 'lowest'
       ? { price: 1 }
       : { price: -1 }
     : { _id: -1 };
-    
+
   const products = await Product.find({ ...category, ...searchKeyword }).sort(
     sortOrder
   );
@@ -111,4 +113,4 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
   return res.status(500).send({ message: ' Error in Creating Product.' });
 });
 
-module.exports= router;
+module.exports = router;
