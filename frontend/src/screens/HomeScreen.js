@@ -14,17 +14,6 @@ function HomeScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listProducts(category));
-
-    // PLS REMOVE 18-27 LINE I JUST TESTED DATA IS COMMING OR NOT 
-    axios.get(`/api/products`)
-      .then(res => {
-        alert('data loaded, please check the console ')
-        console.log('tihs are data from server ',res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-
     return () => {
       //
     };
