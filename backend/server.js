@@ -34,8 +34,8 @@ app.listen(config.PORT, () => {
 const mongodbUrl = config.MONGODB_URL;
 mongoose.connect(mongodbUrl, {useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true},err=>{
   if(err){
-    console.log(err)
     return console.log('Database connection error')
+    console.log(err)
   }else{
     console.log("database connected")
   }
