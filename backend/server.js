@@ -2,21 +2,13 @@ const express=require('express');
 const path=require('path');
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
+// proxy error solved here 
 const cors=require('cors')
 const config=require('./config');
 const userRoute=require('./routes/userRoute');
 const productRoute=require('./routes/productRoute');
 const orderRoute=require('./routes/orderRoute');
 const uploadRoute=require('./routes/uploadRoute');
-
-const mongodbUrl = config.MONGODB_URL;
-mongoose
-  .connect(mongodbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .catch((error) => console.log(error.reason));
 
 const app = express();
 
@@ -38,7 +30,17 @@ app.get('*', (req, res) => {
 });
 
 app.listen(config.PORT, () => {
+  
+const mongodbUrl = config.MONGODB_URL;
+mongoose.connect(mongodbUrl, {useNewUrlParser: true,useUnifiedTopology: true,useCreateIndex: true},err=>{
+  if(err){
+    console.log(err)
+    return console.log('Database connection error')
+  }else{
+    console.log("database connected")
+  }
+})
+
   console.log('Server started at http://localhost:5000');
 });
 
-// TopologyDescription

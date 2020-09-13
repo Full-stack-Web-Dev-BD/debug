@@ -8,12 +8,6 @@ const testProduct =require('../data')
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-// please remove this next line (12-16) i am just testing  by this 
-console.log('got request')
-  return  res.send(testProduct.products);
-
-
-  
   const category = req.query.category ? { category: req.query.category } : {};
   const searchKeyword = req.query.searchKeyword
     ? {
@@ -28,6 +22,7 @@ console.log('got request')
       ? { price: 1 }
       : { price: -1 }
     : { _id: -1 };
+    
   const products = await Product.find({ ...category, ...searchKeyword }).sort(
     sortOrder
   );
