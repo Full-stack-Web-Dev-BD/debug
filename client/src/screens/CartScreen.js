@@ -44,8 +44,15 @@ function CartScreen(props) {
             cartItems.map(item =>
               <li>
                 <div className="cart-image">
-                  <img src={item.image} alt="product" />
-                </div>
+
+                {
+                    item.image ?
+
+                      <img
+                        src={require(`../../../uploads/${item.image}`)}
+                        alt="product"></img> :
+                      <img alt="product"></img>
+                  }                </div>
                 <div className="cart-name">
                   <div>
                     <Link to={"/product/" + item.product}>

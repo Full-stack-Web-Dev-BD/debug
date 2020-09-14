@@ -70,7 +70,14 @@ function OrderScreen(props) {
                   order.orderItems.map(item =>
                     <li key={item._id}>
                       <div className="cart-image">
-                        <img src={item.image} alt="product" />
+                        {
+                          item.image ?
+
+                            <img
+                              src={require(`../../../uploads/${item.image}`)}
+                              alt="product"></img> :
+                            <img alt="product"></img>
+                        }
                       </div>
                       <div className="cart-name">
                         <div>
@@ -97,12 +104,16 @@ function OrderScreen(props) {
         <div className="placeorder-action">
           <ul>
             <li className="placeorder-actions-payment">
-              {loadingPay && <div>Finishing Payment...</div>}
-              {!order.isPaid &&
+              {/* {loadingPay && <div>Finishing Payment...</div>} */}
+              {/* {!order.isPaid &&
                 <PaypalButton
                   amount={order.totalPrice}
                   onSuccess={handleSuccessPayment} />
-              }
+              } */}
+              
+              <PaypalButton
+                  amount={order.totalPrice}
+                  onSuccess={handleSuccessPayment} />
             </li>
             <li>
               <h3>Order Summary</h3>

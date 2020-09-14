@@ -74,7 +74,15 @@ function PlaceOrderScreen(props) {
                 cartItems.map(item =>
                   <li>
                     <div className="cart-image">
-                      <img src={item.image} alt="product" />
+
+                      {
+                        item.image ?
+
+                          <img
+                            src={require(`../../../uploads/${item.image}`)}
+                            alt="product"></img> :
+                          <img alt="product"></img>
+                      }
                     </div>
                     <div className="cart-name">
                       <div>
@@ -96,7 +104,7 @@ function PlaceOrderScreen(props) {
           </ul>
         </div>
 
-      
+
       </div>
       <div className="placeorder-action">
         <ul>

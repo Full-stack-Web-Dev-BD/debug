@@ -63,7 +63,7 @@ function HomeScreen(props) {
                     <Link to={'/product/' + product._id}>
                       <img
                         className="product-image"
-                        src={product.image}
+                        src={require(`../../../uploads/${product.image}`)}
                         alt="product"
                       />
                     </Link>

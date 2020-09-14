@@ -38,8 +38,8 @@ function App() {
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
-              <Link to="/signin">Sign In</Link>
-            )}
+                <Link to="/signin">Sign In</Link>
+              )}
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <a href="#">Admin</a>
@@ -70,17 +70,20 @@ function App() {
         </aside>
         <main className="main">
           <div className="content">
-            <Route path="/orders" component={OrdersScreen} />
-            <Route path="/profile" component={ProfileScreen} />
             <Route path="/order/:id" component={OrderScreen} />
+            <Route path="/cart/:id?" component={CartScreen} />
+            <Route path="/register" component={RegisterScreen} />
+            <Route path="/signin" component={SigninScreen} />
+            <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/placeorder" component={PlaceOrderScreen} />
+            <Route path="/profile" component={ProfileScreen} />
+            <Route path="/orders" component={OrdersScreen} />
+
+
+
             <Route path="/products" component={ProductsScreen} />
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
-            <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/signin" component={SigninScreen} />
-            <Route path="/register" component={RegisterScreen} />
-            <Route path="/product/:id" component={ProductScreen} />
-            <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/category/:id" component={HomeScreen} />
             <Route path="/" exact={true} component={HomeScreen} />
           </div>

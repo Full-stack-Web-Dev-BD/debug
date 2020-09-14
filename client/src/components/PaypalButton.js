@@ -49,7 +49,7 @@ function PaypalButton(props) {
   const Button = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
   return <Button {...props} createOrder={(data, actions) => createOrder(data, actions)}
-    onApprove={(data, actions) => onApprove(data, actions)} />
+    onApprove={(data, actions) => onApprove(data, actions)}>Pay</Button>
 }
 
 export default PaypalButton;

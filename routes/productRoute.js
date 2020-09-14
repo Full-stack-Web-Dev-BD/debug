@@ -2,14 +2,10 @@ const express = require('express');
 const Product = require('../models/productModel');
 const { isAuth, isAdmin } = require('../util');
 
-// just for test , our server data sending to client or not 
-const testProduct = require('../data')
-
 const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-  return res.send(testProduct.products)
   const category = req.query.category ? { category: req.query.category } : {};
   const searchKeyword = req.query.searchKeyword
     ? {
