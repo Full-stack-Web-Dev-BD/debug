@@ -34,7 +34,7 @@ function App() {
             <Link to="/">Cat shop</Link>
           </div>
           <div className="header-links">
-            <a href="cart.html">Cart</a>
+            {/* <a href="cart.html">Cart</a> */}
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
